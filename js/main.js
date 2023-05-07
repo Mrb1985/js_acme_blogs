@@ -335,3 +335,34 @@ function removeButtonListeners() {
 
     return buttons;
 }
+
+function createComments(comments) {
+   
+    if (!comments) {
+      return undefined;
+    }
+    
+    let docFragment = document.createDocumentFragment();
+    
+    for (let i = 0; i < comments.length; i++) {
+      const element = comments[i];
+      
+      let a = document.createElement("a");
+      
+      let h3 = createElemWithText("h3", comment.name);
+      
+      let p1 = createElemWithText("p", comment.body);
+      
+      let p2 = createElemWithText("p", `From: ${comment.email}`);
+     
+      a.appendChild(h3);
+      a.appendChild(p);
+      a.appendChild(p);
+      
+      docFragment.appendChild(a);
+    }
+    
+    return docFragment;
+}
+
+
