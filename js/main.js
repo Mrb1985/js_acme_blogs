@@ -365,4 +365,80 @@ function createComments(comments) {
     return docFragment;
 }
 
+function populateSelectMenu(users) {
+
+    
+    if (!users) return;
+    
+    let m = document.querySelector("#selectMenu");
+    
+    let options = createSelectOptions(users);
+
+    
+    for (let i = 0; i < options.length; i++) {
+        let option = options[i];
+        m.append(option);
+    } 
+
+    
+    return m;
+
+}
+
+let getUsers = async() => {
+
+        let r;
+        
+        try {
+            r = await fetch("https://jsonplaceholder.typicode.com/users");
+        } 
+        catch (error) {
+            console.log(error);
+        } 
+
+        
+        return await r.json();
+
+    } 
+
+let getUserPosts = async(userId) => {
+
+        
+        if (!userId) return;
+
+        let r;
+
+        
+        try {
+            r = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`);
+        } 
+        catch (error) {
+            console.log(error);
+        } 
+
+        
+        return r.json();
+
+    } 
+
+let getUser = async(userId) => {
+
+        
+        if (!userId) return;
+
+        let r;
+
+        
+        try {
+            r = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        } 
+        catch (error) {
+            console.log(error);
+        } 
+
+        
+        return r.json();
+
+    } 
+
 
